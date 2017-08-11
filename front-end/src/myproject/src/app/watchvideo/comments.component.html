@@ -1,0 +1,61 @@
+<!--<ul>
+    <li *ngFor="let cmt of comments">
+        <div class="row">
+
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                <avatar [user]="cmt"></avatar>
+            </div>
+
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                <a> {{cmt.username}}
+                </a>
+                <div>{{cmt.content}}
+                </div>
+            </div>
+            <br />
+
+        </div>
+    </li>
+</ul>
+-->
+<h2> Bình luận: </h2>
+<form (submit)="setComment()" (keyup.enter)="setComment()">
+    <!--
+    <div class="input-group">
+        <input style="width:100%;height:100px;" type="text" name="content" [(ngModel)]="comment.content" (ngModelChange)="checkEmp()" placeholder="Bình luận...">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default" [disabled]="check"  >Gửi</button>
+        </span>
+    </div>
+    -->
+    <div class="row">
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" style="padding-left: 20px; padding-right: 0px;width:90%">
+            <textarea class="form-control input-msg " name="content" rows="3" [(ngModel)]="comment.content" (ngModelChange)="checkEmp()"
+                 placeholder="Bình luận..."></textarea>
+        </div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-left:5px;align-content: right;" >
+            <button type="submit" class="btn btn-default " [disabled]="check">Gửi</button>
+        </div>
+    </div>
+</form>
+<ul>
+    <li *ngFor="let cmt of show_list">
+        <div class="media">
+            <div class="media-left">
+                <avatar [user]="cmt"></avatar>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a *ngIf="cmt.username!=video.ownername" routerLink="/channel/{{cmt.id_user}}"> {{cmt.username}}</a>
+                    <a *ngIf="cmt.username==video.ownername" routerLink="/channel/{{cmt.id_user}}" class="owner"> {{cmt.username}}</a>
+                    <small><i>  Posted on {{cmt.date}}</i></small></h4>
+                <p>{{cmt.content}}</p>
+            </div>
+            <div *ngIf="cmt.id_user==current_user" class="media-left">
+                <button type="button" class="btn btn-warning" (click)="delComment(cmt)"><i class="fa fa-trash" style="font-size:24px"></i></button>
+            </div>
+        </div>
+    </li>
+</ul>
+<button *ngIf="visible" type="button" (click)="more()" class="btn btn-large btn-block btn-default">Tải thêm ...</button>

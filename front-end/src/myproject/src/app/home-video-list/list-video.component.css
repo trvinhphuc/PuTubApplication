@@ -1,0 +1,19 @@
+p {
+    margin-right: 5%;
+    border-style: solid hidden solid hidden;
+    position: relative;
+}
+a:link {
+    color: black; 
+}
+a:visited{
+    color: lightblue;
+}
+a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+a:active{
+    color: lightblue;
+    text-decoration: underline;
+}

@@ -1,0 +1,116 @@
+<div align="center" class="container">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="videogular-container">
+      <vg-player (onPlayerReady)="onPlayerReady($event)">
+        <vg-overlay-play></vg-overlay-play>
+        <vg-buffering></vg-buffering>
+
+        <vg-controls  [vgAutohide]="true" [vgAutohideTime]="3">
+          <vg-play-pause></vg-play-pause>
+          <vg-playback-button></vg-playback-button>
+
+          <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+          <vg-scrub-bar [vgSlider]="true">
+            <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+          </vg-scrub-bar>
+
+          <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+          <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+          <vg-track-selector></vg-track-selector>
+          <vg-mute></vg-mute>
+          <vg-volume></vg-volume>
+
+          <vg-fullscreen></vg-fullscreen>
+        </vg-controls>
+        <video *ngIf="watchable" [vgMedia]="media" #media src="http://localhost:8080/test/rest/video2/test/{{id_video}}" type="video/mp4" preload="auto"></video>
+      </vg-player>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <form id="uploadVideo" class="uploadForm">
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <label for="">Tên video:</label>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <dx-text-box id='name' placeholder="Gõ tên video vô đây nè ..." [(value)]='video.videoname'>
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Đặt tên cho video của bạn đi nào"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <label for="">Mô tả:</label>
+
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+          <dx-text-area id='des' placeholder="Mô tả ..." [(value)]='video.descript' height=90>
+          </dx-text-area>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <label for="">Tag:</label>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <dx-text-box placeholder="Thêm tag, ví dụ: vui, hài, nhạc hay ...." [(value)]='video.tag'>
+
+          </dx-text-box>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div align="center" class="privacy_btn">
+          <dx-select-box (onSelectionChanged)="checkPrivacy()" [items]="priv_choices" placeholder="Quyền riêng tư" [(value)]="privacy">
+          </dx-select-box>
+        </div>
+      </div>
+      <div *ngIf="visible" class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <label for="">Chia sẻ với:</label>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <dx-text-box placeholder="Thêm tên user, các user cách nhau dấu , vd: user1,user2 ..." [(value)]='shared_users'>
+
+          </dx-text-box>
+        </div>
+      </div>
+      <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal"><i class="fa fa-trash" style="font-size:24px"></i></button>
+      <button type="button" class="btn btn-success" (click)="sendVideoInfo()">Lưu lại</button>
+      
+    </form>
+  </div>
+</div>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><i class="fa fa-warning" style="color:red"></i>Warning</h4>
+        </div>
+        <div class="modal-body">
+          <p>Bạn có chắc chắn muốn xóa video này?</p>
+          <p>Nếu tiếp tục thì video này sẽ bị xóa vĩnh viễn.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="delVideo()">Có</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
+        </div>
+      </div>
+
+    </div>
+  </div>

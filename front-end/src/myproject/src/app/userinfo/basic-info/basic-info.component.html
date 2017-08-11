@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-3 col-lg-6">
+    <div id="form-container">
+      <form  (keyup.enter)="update()"  >
+        <dx-form id="form" validationGroup="customerData" [formData]="user" [colCount]="1" >
+          <dxi-item itemType="group" caption=" Thông tin người dùng ">
+            <dxi-item dataField="username" [editorOptions]="{ placeholder:'Tên người dùng ...' }">
+              <dxo-label text="User Name">
+              </dxo-label>
+              <dxi-validation-rule type="required" message="User Name is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="channelname" [editorOptions]="{ placeholder:'Đặt tên cho Kênh của bạn nào' }">
+              <dxo-label text="Tên Kênh">
+              </dxo-label>
+
+              <dxi-validation-rule type="required" message="Channel Name is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="date" editorType="dxDateBox" [editorOptions]="{invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',placeholder:'MM/DD/YYYY' }">
+              <dxo-label text="Ngày sinh">
+              </dxo-label>
+              <dxo-format type="shortDate"></dxo-format>
+              <dxi-validation-rule type="required" message="Date of birth is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="email" [editorOptions]="{ mode: 'email',placeholder:'Cho cái email cái nè' }">
+              <dxi-validation-rule type="required" message="Email is required">
+              </dxi-validation-rule>
+            </dxi-item>
+
+          </dxi-item>
+        </dx-form>
+
+        <br />
+        <h4>Thay Ảnh đại diện:</h4>
+        <div class="widget-container">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-6">
+            <avatar [user]="ava"></avatar>
+          </div>
+          <dx-file-uploader #fileUploader uploadMode="instantly" name="file" uploadUrl="http://localhost:8080/test/rest/file/upload"
+            [(value)]="user.ava" labelText="hoặc kéo thả vào đây" selectButtonText="Chọn file" [multiple]="false" accept="image/*"></dx-file-uploader>
+        </div>
+
+        <br />
+        <dx-button text="Lưu lại" validationGroup="customerData" type="success" (keyup.enter)="update()" (onClick)="onFormSubmit($event)" ></dx-button>
+
+      </form>
+    </div>
+
+  </div>
+</div>

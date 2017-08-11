@@ -1,0 +1,39 @@
+.background {
+    width: max-content;
+    height: 400px;
+    z-index: 0;
+}
+.avatar {
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    position: absolute;
+    top : 200px;
+    right: 40%;
+}
+.logout_button{
+    width: 70px;
+    height: 20px;
+    z-index: 1;
+    position: absolute;
+    top : 100px;
+    right: 8%;
+}
+.userinfo_button{
+    width: 70px;
+    height: 20px;
+    z-index: 1;
+    position: absolute;
+    top : 140px;
+    right: 14%;
+}
+.subBtn{
+    margin-left: 0%;
+}
+.navbar {
+    margin-top: 0;
+    background-color: lightblue;
+}
+h1 {
+    background-color: lightblue;
+} 

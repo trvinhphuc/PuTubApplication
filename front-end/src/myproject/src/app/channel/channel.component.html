@@ -1,0 +1,67 @@
+<div>
+  <img src="http://wallpapercave.com/wp/7jlmU6w.jpg" class="img-responsive background" alt="Image">
+  <img src="{{imageData}}" class="img-responsive avatar" alt="Image">
+
+  <div *ngIf="user.id == current_user" class="logout_button">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Đăng xuất</button>
+  </div>
+
+
+
+  <!--<img  src="data:image/jpg;base64,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" class="img-responsive avatar" alt="Image">-->
+  <!--<img  src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png" class="img-responsive avatar" alt="Image">-->
+</div>
+
+<div class="navbar">
+  <h1>{{user.channelname}}</h1>
+  <div *ngIf="user.id != current_user" class="subBtn">
+    <button style="width:100px;height:30px" type="button" class="btn btn-primary" (click)="subcribe()">Theo dõi</button>
+  </div>
+  <ul class="nav navbar-nav">
+    <li class="active">
+      <a routerLink="home_channel" routerLinkActive="active">
+      <button type="button" class="btn btn-primary">Trang chủ</button>
+      </a>
+    </li>
+    <li>
+      <a routerLink="uploaded_videos" routerLinkActive="active">
+      <button type="button" class="btn btn-primary">Video tải lên</button>
+      </a>
+    </li>
+    <li>
+      <a routerLink="info_channel" routerLinkActive="active">
+      <button type="button" class="btn btn-primary">Thông tin</button>
+      </a>
+    </li>
+    <li>
+      <a routerLink="sub_channel" routerLinkActive="active">
+      <button type="button" class="btn btn-primary">Kênh</button>
+      </a>
+    </li>
+  </ul>
+</div>
+<div>
+  <router-outlet>
+  </router-outlet>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Warning</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn Đăng xuất?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="logout()">Có</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
+      </div>
+    </div>
+
+  </div>
+</div>

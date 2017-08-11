@@ -1,0 +1,33 @@
+.widget-container {
+    border-style: dashed;
+    padding-left: 35%;
+    padding-right: 25%;
+}
+.dropdown-menu-center {
+  left: 50% ;
+  right: auto ;
+  text-align: left ;
+  transform: translate(-50%, 0);
+}
+
+.dx-fileuploader-button .dx-button .dx-button-normal .dx-widget .dx-button-has-text{
+    float: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px transparent;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #eee;
+    border-color: #333;
+    color: #333;
+}
+.privacy_btn{
+    width: 200px;
+    margin-left: 45%;
+}
+.uploadForm{
+    text-align: right;
+    
+}
+.row{
+    padding-top: 10px;
+}

@@ -1,0 +1,14 @@
+<p>
+    Kênh: <a (click)="select()">{{user.username}} </a> </p>
+<div class="container">
+    <div class="row">
+
+        <li *ngFor="let video of videos">
+            <a >
+                <div class="col-xs-3">
+                    <onevideo [video]="video"> </onevideo>
+                </div>
+            </a>
+        </li>
+    </div>
+</div>

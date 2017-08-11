@@ -1,0 +1,17 @@
+.privacy_btn{
+    width: 200px;
+    margin-left: 45%;
+}
+.uploadForm{
+    text-align: right;
+    
+}
+.row{
+    padding-top: 10px;
+}
+.videogular-container {
+    width: 50%;
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
+}

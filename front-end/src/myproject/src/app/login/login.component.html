@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-lg-6 ">
+
+    <h1>Chào mừng bạn! ^_^</h1>
+    <!--<form action="http://localhost:8080/test/rest/test/login" method="post" >-->
+    <form (submit)="login()" (keydown.enter)="login()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" placeholder="Username or Email ..." name="username" [(ngModel)]="user.username">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu:</label>
+        <input type="password" class="form-control" placeholder="Nhập pass vô đây nè ..." name="password" [(ngModel)]="user.password">
+      </div>
+      <button class="btn btn-success">Đăng nhập</button>
+      <a routerLink='/logup' class="btn btn-link">Đăng ký</a>
+    </form>
+
+  </div>
+</div>

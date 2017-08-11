@@ -1,0 +1,25 @@
+<div class="searchbar">
+    <form (keyup.enter)="searchRequest()">
+        <input style="width:50%;height:50px;" type="text" placeholder="Tìm kiếm ..." name="searchValue" [(ngModel)]="searchValue"
+            (ngModelChange)="checkEmp()">
+        <button (click)="searchRequest()" type="button" [disabled]="check" class="btn btn-default" style="width:70px;height:50px;text-align:center">
+                  <i class="fa fa-search" style="font-size:25px"></i> </button>
+        <label> Tìm kiếm: </label>
+        <label>
+           <input type="checkbox" name="user" [(ngModel)]="option.user">
+           Users
+            </label>
+        <label>
+           <input type="checkbox" name="video" [(ngModel)]="option.video">
+           Videos
+            </label>
+    </form>
+</div>
+<ul>
+    <li *ngFor="let user of show_list">
+        <list-video [user]="user"></list-video>
+    </li>
+</ul>
+<div class="morebtn">
+    <button type="button" (click)="more()" class="btn btn-large btn-block btn-default">Tải thêm ...</button>
+</div>

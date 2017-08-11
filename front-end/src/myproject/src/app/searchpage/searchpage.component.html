@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="searchbar">
+        <form (keyup.enter)="searchRequest()">
+            <input style="width:50%;height:50px;" type="text" placeholder="Tìm kiếm ..." name="searchValue" [(ngModel)]="searchValue"
+                (ngModelChange)="checkEmp()">
+
+            <button (keyup.enter)="searchRequest()" (click)="searchRequest()" type="button" [disabled]="check" class="btn btn-default"
+                style="width:70px;height:50px;text-align:center">
+                  <i class="fa fa-search" style="font-size:25px"></i> </button>
+            <label> Tìm kiếm: </label>
+
+            <label>
+           <input type="checkbox" name="user" [(ngModel)]="option.user">
+           Users
+            </label>
+            <label>
+           <input type="checkbox" name="video" [(ngModel)]="option.video">
+           Videos
+            </label>
+        </form>
+    </div>
+    <h2> {{result}} </h2>
+    <ul *ngIf="op==user">
+        <li class="userlist" *ngFor="let u of users">
+            <div class="media">
+                <div class="media-left">
+                    <a routerLink="/channel/{{u.id}}">
+                    <img src="{{u.ava}}" class="media-object" style="width:100px;height:100px">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <a routerLink="/channel/{{u.id}}"> {{u.username}}</a>
+                    </h4>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="userlist" *ngIf="op==video">
+        <li *ngFor="let v of videos">
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <onevideo [video]="v"></onevideo>
+            </div>
+        </li>
+    </ul>
+</div>

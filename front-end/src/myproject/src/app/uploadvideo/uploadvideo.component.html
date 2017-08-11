@@ -1,0 +1,131 @@
+<div align="center" class="container">
+  <div class="widget-container">
+    <dx-file-uploader #fileUploader uploadMode="instantly" name="file" uploadUrl="http://localhost:8080/test/rest/file/upload"
+      labelText="hoặc kéo thả vào đây" selectButtonText="Chọn file" [multiple]="false" accept="video/*" [(value)]="video.realname"></dx-file-uploader>
+
+    <div class="content">
+      <div *ngIf="value.length > 0">
+        <img style="width:50px;height:50px;" align="right" src="https://cdn0.iconfinder.com/data/icons/glyphpack/40/upload-128.png"
+        />
+        <h4>Selected Files</h4>
+      </div>
+      <div *ngFor="let file of value">
+        <div class="selected-item">
+          Name:
+          <span>{{file.name}}</span><br /> Size:
+          <span>{{file.size}}</span>bytes<br /> Type:
+          <span>{{file.type}}</span><br /> Last Modified Date:
+          <span>{{file.lastModifiedDate}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+  <div class="col-md-6 col-md-offset-3 col-lg-6 ">
+   
+    <dx-form id="form" validationGroup="videoData" [formData]="video" [colCount]="1">
+      <dxi-item dataField="video_name">
+        <dxo-label text="Tên video">
+        </dxo-label>
+        <dx-text-box placeholder="Gõ tên video vô đây nè ...">
+        </dx-text-box>
+        <dxi-validation-rule type="required" message="Đặt tên cho video của bạn đi nào">
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="description" editorType="dxTextArea" [editorOptions]="{ height: 90 }" [colSpan]="2">
+        <dxo-label text="Mô tả">
+        </dxo-label>
+        <dx-text-area placeholder="Mô tả ..." height=90>
+        </dx-text-area>
+      </dxi-item>
+      <dxi-item dataField="tag">
+        <dxo-label text="Tag">
+        </dxo-label>
+        <dx-text-box placeholder="Thêm tag, ví dụ: vui, hài, nhạc hay ....">
+        </dx-text-box>
+      </dxi-item>
+    </dx-form>
+    -->
+  <div class="col-md-10">
+    <form id="uploadVideo" class="uploadForm">
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <label for="">Tên video:</label>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <dx-text-box id='name' placeholder="Gõ tên video vô đây nè ..." [(value)]='video.videoname'>
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Đặt tên cho video của bạn đi nào"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <label for="">Mô tả:</label>
+
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+          <dx-text-area id='des' placeholder="Mô tả ..." [(value)]='video.descript' height=90>
+          </dx-text-area>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <label for="">Tag:</label>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <dx-text-box placeholder="Thêm tag, ví dụ: vui, hài, nhạc hay ...." [(value)]='video.tag'>
+
+          </dx-text-box>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div align="center" class="privacy_btn">
+          <dx-select-box (onSelectionChanged)="checkPrivacy()" [items]="priv_choices" placeholder="Quyền riêng tư" [(value)]="privacy">
+          </dx-select-box>
+        </div>
+      </div>
+      <div *ngIf="visible" class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+          <label for="">Chia sẻ với:</label>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <dx-text-box placeholder="Thêm tên user, các user cách nhau dấu , vd: user1,user2 ..." [(value)]='shared_users'>
+
+          </dx-text-box>
+        </div>
+      </div>
+      <button type="button" class="btn btn-success" (click)="sendVideoInfo()">Đăng tải</button>
+      <!--
+      <div align="center" class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Quyền riêng tư
+        <span align="center" class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-center">
+          <li><a>Công khai</a></li>
+          <li><a>Không công khai </a></li>
+          <li><a>Riêng tư</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div align="center" class="privacy_btn">
+          <select name="" id="input" class="form-control" required="required" placeholder="Quyền riêng tư">
+        <option value="public">Công khai</option>
+        <option value="notpublic"> Không công khai </option>
+        <option value="private">Riêng tư</option>
+          </select>
+        </div>
+      </div>
+      -->
+    </form>
+  </div>
+</div>

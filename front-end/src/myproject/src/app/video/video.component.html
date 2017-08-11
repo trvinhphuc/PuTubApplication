@@ -1,0 +1,6 @@
+
+    <a class="thumbnail">
+           <img  [class.selected]="isSelected(video)"
+        (click)="onSelect(video)" src="data:image/jpg;base64,{{video.img}}" alt="125x125">
+           <p> {{video.videoname}} </p>
+    </a>

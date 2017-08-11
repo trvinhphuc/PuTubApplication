@@ -1,0 +1,56 @@
+h1 {
+    font-weight: bold;
+    color: #87eadd;
+    border-style: none;
+    border-radius: 10px;
+}
+h3 {
+    
+    border-color: #3466AA;
+    border-style: solid;
+    border-width: 10px;
+    
+}
+i {
+    position: relative;
+    right: 10px;
+}
+header{
+    border-radius: 25px;
+    background-color: #87eadd;
+    border-style: none;
+}
+a:link {
+    color: black; 
+}
+a:visited{
+    color: lightblue;
+}
+a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+a:active{
+    color: lightblue;
+    text-decoration: underline;
+}
+.userinfo_button{
+    color: black;
+    text-align: center;
+    padding: 0.5px;
+    padding-left: 11px;
+    position: absolute;
+    right: 3.5%;
+    top:45px;
+}
+.userbutton{
+    right: 5%;
+    left: auto;
+    transform: translate(-5%, 0);
+}
+
+.uploadbutton{
+    right: 10%;
+    left: auto;
+    transform: translate(-10%, 0);
+}

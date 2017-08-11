@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-3 col-lg-7 ">
+    <div id="form-container">
+      <form>
+        <dx-form id="form" validationGroup="customerData" [formData]="user" [colCount]="1" (keydown.enter)="register()">
+          <dxi-item itemType="group" caption=" Hey Let's Signup ^_^ ">
+            <dxi-item dataField="username" [editorOptions]="{ placeholder:'Tên người dùng ...' }">
+              <dxo-label text="User Name">
+              </dxo-label>
+              <dxi-validation-rule type="required" message="User Name is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="channelname" [editorOptions]="{ placeholder:'Đặt tên cho Kênh của bạn nào' }">
+              <dxo-label text="Tên Kênh">
+              </dxo-label>
+
+              <dxi-validation-rule type="required" message="Channel Name is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="date" editorType="dxDateBox" [editorOptions]="{invalidDateMessage: 'The date must have the following format: MM/dd/yyyy',placeholder:'DD/MM/YYYY' }">
+              <dxo-label text="Ngày sinh">
+              </dxo-label>
+              <dxo-format type="shortDate"></dxo-format>
+              <dxi-validation-rule type="required" message="Date of birth is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="email" [editorOptions]="{ mode: 'email',placeholder:'Cho cái email cái nè' }">
+              <dxi-validation-rule type="required" message="Email is required">
+              </dxi-validation-rule>
+              <dxi-validation-rule 
+                    type="pattern"
+                    [pattern]="emailPattern"
+                    message="The email must have a correct format">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="password" [editorOptions]="{ mode: 'password', placeholder:'Nhập mật khẩu ... suỵt coi chừng xung quanh!' }">
+              <dxo-label text="Mật khẩu">
+              </dxo-label>
+              <dxi-validation-rule type="required" message="Password is required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item editorType="dxTextBox" [editorOptions]="{ mode: 'password',placeholder:'Chịu khó nhập lại cái nhé, để kiểm tra đó mà ;)' }">
+              <dxo-label text="Nhập lại mật khẩu">
+              </dxo-label>
+              <dxi-validation-rule type="required" message="Confirm Password is required">
+              </dxi-validation-rule>
+              <dxi-validation-rule type="compare" [comparisonTarget]="passwordComparison" message="Password and Confirm Password do not match">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item>
+
+            </dxi-item>
+          </dxi-item>
+        </dx-form>
+
+        <br />
+        <h4>Đăng tải Ảnh đại diện:</h4>
+        <div class="widget-container">
+
+          <dx-file-uploader #fileUploader uploadMode="instantly" name="file" uploadUrl="http://localhost:8080/test/rest/file/upload"
+            [(value)]="user.ava" labelText="hoặc kéo thả vào đây" selectButtonText="Chọn file" [multiple]="false" accept="image/*"></dx-file-uploader>
+        </div>
+
+        <br />
+        <dx-button text="Đăng ký" validationGroup="customerData" type="success" (keyup.enter)="register()" (onClick)="onFormSubmit($event)"></dx-button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
